@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding Journey — Fitness Connection</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fc-red: #C41E2A;
+  --fc-red-dark: #9B1821;
+  --fc-blue: #2B6CB0;
+  --fc-blue-dark: #1E4D80;
+  --fc-blue-pale: #EBF2FA;
+  --fc-yellow: #F4C542;
+  --fc-green: #059669;
+  --fc-green-light: #D1FAE5;
+  --fc-white: #FFFFFF;
+  --fc-offwhite: #F7F8FA;
+  --fc-gray-100: #F1F3F5;
+  --fc-gray-200: #E5E7EB;
+  --fc-gray-300: #D1D5DB;
+  --fc-gray-400: #9CA3AF;
+  --fc-gray-500: #6B7280;
+  --fc-gray-600: #4B5563;
+  --fc-gray-800: #1F2937;
+  --fc-black: #111827;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: #E8EAED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+/* ═══════════════ PHONE FRAME ═══════════════ */
+.phone-frame {
+  width: 375px;
+  height: 812px;
+  background: var(--fc-black);
+  border-radius: 48px;
+  padding: 12px;
+  box-shadow:
+    0 0 0 2px #2A2A2E,
+    0 0 0 4px #1A1A1E,
+    0 20px 60px rgba(0,0,0,0.35),
+    0 40px 100px rgba(0,0,0,0.2),
+    inset 0 0 0 2px rgba(255,255,255,0.05);
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Notch */
+.phone-notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 32px;
+  background: var(--fc-black);
+  border-radius: 0 0 20px 20px;
+  z-index: 20;
+}
+
+.phone-notch::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 5px;
+  background: #2A2A2E;
+  border-radius: 10px;
+}
+
+/* Status bar */
+.phone-status {
+  position: absolute;
+  top: 16px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 15;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fc-white);
+  padding: 0 8px;
+}
+
+.phone-status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+/* Screen */
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: var(--fc-white);
+  border-radius: 38px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Scrollable content */
+.phone-content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.phone-content::-webkit-scrollbar { width: 0; }
+
+/* ═══════════════ APP HEADER (fixed look) ═══════════════ */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--fc-red);
+  padding: 48px 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.app-header-logo {
+  width: 32px;
+  height: 32px;
+  background: var(--fc-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--fc-black);
+  flex-shrink: 0;
+}
+
+.app-header-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fc-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.app-header-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ═══════════════ PROGRESS BAR ═══════════════ */
+.onboard-progress {
+  background: var(--fc-gray-100);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--fc-gray-200);
+}
+
+.onboard-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--fc-gray-200);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.onboard-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--fc-red), var(--fc-blue));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.onboard-progress-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--fc-gray-500);
+  white-space: nowrap;
+}
+
+/* ═══════════════ WELCOME SECTION ═══════════════ */
+.welcome-section {
+  padding: 28px 20px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, #FFF8F6 0%, var(--fc-white) 100%);
+}
+
+.welcome-wave { font-size: 36px; margin-bottom: 8px; }
+
+.welcome-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--fc-black);
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.welcome-name .red { color: var(--fc-red); }
+
+.welcome-msg {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--fc-gray-600);
+  line-height: 1.55;
+  padding: 0 8px;
+}
+
+/* ═══════════════ MISSION / VALUES ═══════════════ */
+.mission-section {
+  padding: 20px;
+}
+
+.mission-card {
+  background: var(--fc-blue-pale);
+  border-radius: 14px;
+  padding: 20px;
+  border-left: 4px solid var(--fc-blue);
+  margin-bottom: 12px;
+}
+
+.mission-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--fc-blue);
+  margin-bottom: 6px;
+}
+
+.mission-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fc-gray-800);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.values-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.value-chip {
+  padding: 6px 14px;
+  background: var(--fc-white);
+  border: 1.5px solid var(--fc-gray-200);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fc-gray-700);
+}
+
+/* ═══════════════ START DETAILS ═══════════════ */
+.start-details {
+  padding: 24px 20px;
+  text-align: center;
+  background: var(--fc-gray-100);
+  border-top: 1px solid var(--fc-gray-200);
+  border-bottom: 1px solid var(--fc-gray-200);
+}
+
+.start-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--fc-red);
+  margin-bottom: 12px;
+}
+
+.start-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--fc-black);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.start-time {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--fc-blue);
+  margin-bottom: 12px;
+}
+
+.start-location {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fc-gray-800);
+  margin-bottom: 4px;
+}
+
+.start-contact {
+  font-size: 13px;
+  color: var(--fc-gray-500);
+}
+
+/* ═══════════════ JOURNEY TRACKER ═══════════════ */
+.journey-section {
+  padding: 24px 20px 20px;
+}
+
+.journey-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--fc-black);
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.journey-timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+/* Vertical line */
+.journey-timeline::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--fc-gray-200);
+}
+
+.journey-checkpoint {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+/* Dot */
+.checkpoint-dot {
+  position: absolute;
+  left: -36px;
+  top: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--fc-white);
+  border: 3px solid var(--fc-gray-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.checkpoint-dot::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: var(--fc-green);
+  transition: all 0.3s;
+}
+
+.journey-checkpoint.completed .checkpoint-dot {
+  border-color: var(--fc-green);
+  background: var(--fc-green);
+}
+
+.journey-checkpoint.completed .checkpoint-dot::after {
+  content: '✓';
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  width: auto;
+  height: auto;
+  background: none;
+}
+
+.journey-checkpoint.active .checkpoint-dot {
+  border-color: var(--fc-blue);
+  box-shadow: 0 0 0 4px rgba(43,108,176,0.15);
+}
+
+.checkpoint-card {
+  background: var(--fc-white);
+  border: 1.5px solid var(--fc-gray-200);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.journey-checkpoint.completed .checkpoint-card {
+  border-color: var(--fc-green);
+  background: #F0FDF9;
+}
+
+.journey-checkpoint.active .checkpoint-card {
+  border-color: var(--fc-blue);
+  background: var(--fc-blue-pale);
+  box-shadow: 0 2px 8px rgba(43,108,176,0.08);
+}
+
+.checkpoint-day {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.journey-checkpoint:nth-child(1) .checkpoint-day { color: var(--fc-red); }
+.journey-checkpoint:nth-child(2) .checkpoint-day { color: var(--fc-blue); }
+.journey-checkpoint:nth-child(3) .checkpoint-day { color: #7C3AED; }
+.journey-checkpoint:nth-child(4) .checkpoint-day { color: var(--fc-green); }
+.journey-checkpoint:nth-child(5) .checkpoint-day { color: var(--fc-red); }
+.journey-checkpoint:nth-child(6) .checkpoint-day { color: var(--fc-blue); }
+.journey-checkpoint:nth-child(7) .checkpoint-day { color: #D97706; }
+.journey-checkpoint:nth-child(8) .checkpoint-day { color: var(--fc-red); }
+
+.checkpoint-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fc-black);
+  margin-bottom: 4px;
+}
+
+.checkpoint-desc {
+  font-size: 13px;
+  color: var(--fc-gray-500);
+  line-height: 1.5;
+}
+
+.checkpoint-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--fc-gray-100);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.checkpoint-action:hover { background: var(--fc-gray-200); }
+
+.journey-checkpoint.completed .checkpoint-action {
+  background: var(--fc-green-light);
+}
+
+.action-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid var(--fc-gray-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  font-size: 11px;
+  color: transparent;
+}
+
+.journey-checkpoint.completed .action-check {
+  background: var(--fc-green);
+  border-color: var(--fc-green);
+  color: white;
+}
+
+.action-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fc-gray-600);
+}
+
+.journey-checkpoint.completed .action-text {
+  color: var(--fc-green);
+  text-decoration: line-through;
+}
+
+/* ═══════════════ RATING SECTION ═══════════════ */
+.rating-section {
+  padding: 24px 20px 40px;
+  text-align: center;
+  display: none;
+}
+
+.rating-section.show { display: block; }
+
+.rating-card {
+  background: linear-gradient(135deg, #FFF8F0, #FFF0F0);
+  border: 1.5px solid var(--fc-gray-200);
+  border-radius: 16px;
+  padding: 28px 20px;
+}
+
+.rating-emoji { font-size: 40px; margin-bottom: 8px; }
+
+.rating-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--fc-black);
+  margin-bottom: 4px;
+}
+
+.rating-sub {
+  font-size: 13px;
+  color: var(--fc-gray-500);
+  margin-bottom: 20px;
+}
+
+.star-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.star {
+  font-size: 36px;
+  cursor: pointer;
+  transition: all 0.2s;
+  filter: grayscale(1) opacity(0.3);
+}
+
+.star.active {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.15);
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.rating-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--fc-gray-200);
+  border-radius: 10px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  resize: none;
+  min-height: 64px;
+  margin-bottom: 12px;
+  color: var(--fc-gray-800);
+}
+
+.rating-input:focus {
+  outline: none;
+  border-color: var(--fc-blue);
+}
+
+.rating-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--fc-red);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.rating-btn:hover { background: var(--fc-red-dark); }
+
+.rating-thanks {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+.rating-thanks.show { display: block; }
+
+.rating-thanks h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--fc-green);
+  margin: 8px 0;
+}
+
+.rating-thanks p {
+  font-size: 13px;
+  color: var(--fc-gray-500);
+}
+
+/* ═══════════════ CONFETTI (minimal CSS) ═══════════════ */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+  display: none;
+}
+
+.confetti-container.show { display: block; }
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  top: -10px;
+  animation: confetti-fall 2.5s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(800px) rotate(720deg); opacity: 0; }
+}
+
+/* ═══════════════ EMBED WRAPPER ═══════════════ */
+.embed-label {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.embed-label h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+</style>
+</head>
+<body>
+
+<div>
+  <div class="embed-label">
+    <h2>New Hire Onboarding — Mobile Preview</h2>
+  </div>
+
+  <div class="phone-frame">
+    <!-- Notch -->
+    <div class="phone-notch"></div>
+
+    <!-- Status bar -->
+    <div class="phone-status">
+      <span>9:41</span>
+      <div class="phone-status-right">
+        <span>5G</span>
+        <span>🔋</span>
+      </div>
+    </div>
+
+    <!-- Screen -->
+    <div class="phone-screen">
+      <div class="confetti-container" id="confetti"></div>
+      <div class="phone-content">
+
+        <!-- App Header -->
+        <div class="app-header">
+          <div class="app-header-logo">X</div>
+          <div>
+            <div class="app-header-text">Fitness Connection</div>
+            <div class="app-header-sub">My Onboarding Journey</div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="onboard-progress">
+          <div class="onboard-progress-bar">
+            <div class="onboard-progress-fill" id="ob-progress"></div>
+          </div>
+          <div class="onboard-progress-text" id="ob-progress-text">0 / 7</div>
+        </div>
+
+        <!-- Welcome -->
+        <div class="welcome-section">
+          <div class="welcome-wave">👋</div>
+          <h1 class="welcome-name">Welcome, <span class="red">Maria!</span></h1>
+          <p class="welcome-msg">We are so excited to have you join the Fitness Connection family! Your journey starts here — and we can't wait for you to experience what makes our team so special. Get ready to change lives, including your own.</p>
+        </div>
+
+        <!-- Mission & Values -->
+        <div class="mission-section">
+          <div class="mission-card">
+            <p class="mission-label">Our Mission</p>
+            <p class="mission-text">"To provide an epic fitness experience to all, including underserved communities — making a healthier lifestyle more accessible."</p>
+          </div>
+          <div style="margin-top:12px">
+            <p class="mission-label" style="color:var(--fc-red);margin-bottom:8px">Core Values</p>
+            <div class="values-row">
+              <span class="value-chip">🔥 Passion</span>
+              <span class="value-chip">🤝 Integrity</span>
+              <span class="value-chip">💪 Excellence</span>
+              <span class="value-chip">❤️ Community</span>
+              <span class="value-chip">🚀 Growth</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Details -->
+        <div class="start-details">
+          <p class="start-label">Your First Day</p>
+          <p class="start-date">Monday, March 24, 2026</p>
+          <p class="start-time">9:00 AM — 5:00 PM</p>
+          <p class="start-location">Fitness Connection — Frisco, TX</p>
+          <p class="start-contact">You'll be meeting: <strong>Jessica Martinez, Club Manager</strong></p>
+        </div>
+
+        <!-- Journey Tracker -->
+        <div class="journey-section">
+          <h2 class="journey-title">Your First Week Journey</h2>
+
+          <div class="journey-timeline">
+
+            <!-- Pre-Start -->
+            <div class="journey-checkpoint active" data-step="0">
+              <div class="checkpoint-dot" onclick="toggleStep(0)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Before Day 1</p>
+                <h3 class="checkpoint-title">📦 Welcome Care Package</h3>
+                <p class="checkpoint-desc">You should have received a care package with your FC shirt, name badge, welcome letter, and a few surprises. Confirm you've got it!</p>
+                <div class="checkpoint-action" onclick="toggleStep(0)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">I received my care package</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 1 -->
+            <div class="journey-checkpoint" data-step="1">
+              <div class="checkpoint-dot" onclick="toggleStep(1)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 1 — Welcome Day</p>
+                <h3 class="checkpoint-title">🏋️ Orientation & Club Tour</h3>
+                <p class="checkpoint-desc">Meet the team, tour the club, learn our culture, complete new hire paperwork, and get your locker and system access set up. Wear your new FC shirt!</p>
+                <div class="checkpoint-action" onclick="toggleStep(1)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 1 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="journey-checkpoint" data-step="2">
+              <div class="checkpoint-dot" onclick="toggleStep(2)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 2 — Front Desk Training</p>
+                <h3 class="checkpoint-title">🖥️ The Front Desk Experience</h3>
+                <p class="checkpoint-desc">Today you'll learn the heartbeat of the club — the front desk. Member check-ins, guest greetings, the EPIC welcome, phone etiquette, and how to make every person feel like a VIP the moment they walk in.</p>
+                <div class="checkpoint-action" onclick="toggleStep(2)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 2 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="journey-checkpoint" data-step="3">
+              <div class="checkpoint-dot" onclick="toggleStep(3)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 3 — Systems Training</p>
+                <h3 class="checkpoint-title">⚙️ Systems w/ Joey!</h3>
+                <p class="checkpoint-desc">Joey walks you through all the systems you'll use daily — POS, member management, scheduling tools, and reporting. By end of day, you'll be navigating like a pro.</p>
+                <div class="checkpoint-action" onclick="toggleStep(3)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 3 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="journey-checkpoint" data-step="4">
+              <div class="checkpoint-dot" onclick="toggleStep(4)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 4 — Customer Service</p>
+                <h3 class="checkpoint-title">💬 The FC Service Standard</h3>
+                <p class="checkpoint-desc">Dive deep into what makes our customer service legendary. Handling tough conversations, de-escalation, turning a complaint into a win, and the art of the personal farewell.</p>
+                <div class="checkpoint-action" onclick="toggleStep(4)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 4 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="journey-checkpoint" data-step="5">
+              <div class="checkpoint-dot" onclick="toggleStep(5)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 5 — Sales Fundamentals</p>
+                <h3 class="checkpoint-title">💰 Sell the Experience</h3>
+                <p class="checkpoint-desc">Learn our membership offerings, add-ons, and promotions. Practice your pitch, role-play with a teammate, and build confidence in helping members find the perfect plan.</p>
+                <div class="checkpoint-action" onclick="toggleStep(5)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 5 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="journey-checkpoint" data-step="6">
+              <div class="checkpoint-dot" onclick="toggleStep(6)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 6 — Fitness Floor</p>
+                <h3 class="checkpoint-title">🏃 Floor Presence & Member Engagement</h3>
+                <p class="checkpoint-desc">Get comfortable on the fitness floor. Learn equipment basics, how to approach and assist members, spot-check safety, and become a visible, energetic presence in the club.</p>
+                <div class="checkpoint-action" onclick="toggleStep(6)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 6 complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Day 7 -->
+            <div class="journey-checkpoint" data-step="7">
+              <div class="checkpoint-dot" onclick="toggleStep(7)"></div>
+              <div class="checkpoint-card">
+                <p class="checkpoint-day">Day 7 — Solo Shift</p>
+                <h3 class="checkpoint-title">⭐ Your First Solo Shift</h3>
+                <p class="checkpoint-desc">You're ready! Today you run a full shift with your manager nearby for support. Opening/closing duties, member interactions, sales opportunities — this is your moment to shine.</p>
+                <div class="checkpoint-action" onclick="toggleStep(7)">
+                  <div class="action-check">✓</div>
+                  <span class="action-text">Day 7 complete</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end timeline -->
+        </div><!-- end journey-section -->
+
+        <!-- Rating (appears after all 8 steps) -->
+        <div class="rating-section" id="rating-section">
+          <div class="rating-card">
+            <div class="rating-emoji">🎉</div>
+            <h2 class="rating-title">Week 1 Complete!</h2>
+            <p class="rating-sub">How was your first week? Rate your onboarding experience.</p>
+            <div class="star-row" id="star-row">
+              <span class="star" data-val="1" onclick="setRating(1)">⭐</span>
+              <span class="star" data-val="2" onclick="setRating(2)">⭐</span>
+              <span class="star" data-val="3" onclick="setRating(3)">⭐</span>
+              <span class="star" data-val="4" onclick="setRating(4)">⭐</span>
+              <span class="star" data-val="5" onclick="setRating(5)">⭐</span>
+            </div>
+            <textarea class="rating-input" placeholder="Tell us about your week... (optional)"></textarea>
+            <button class="rating-btn" onclick="submitRating()">Submit Feedback</button>
+          </div>
+          <div class="rating-thanks" id="rating-thanks">
+            <div style="font-size:48px">🙌</div>
+            <h3>Thank You!</h3>
+            <p>Your feedback helps us make the onboarding experience even better. Welcome to the team — let's change lives together.</p>
+          </div>
+        </div>
+
+        <!-- Bottom padding -->
+        <div style="height:40px"></div>
+
+      </div><!-- end phone-content -->
+    </div><!-- end phone-screen -->
+  </div><!-- end phone-frame -->
+</div>
+
+<script>
+const totalSteps = 8; // 0-7
+let completedSteps = new Set();
+
+function toggleStep(idx) {
+  const checkpoint = document.querySelector(`.journey-checkpoint[data-step="${idx}"]`);
+  if (completedSteps.has(idx)) {
+    completedSteps.delete(idx);
+    checkpoint.classList.remove('completed');
+  } else {
+    completedSteps.add(idx);
+    checkpoint.classList.add('completed');
+  }
+  updateProgress();
+  updateActiveState();
+  checkAllComplete();
+}
+
+function updateProgress() {
+  const pct = Math.round((completedSteps.size / totalSteps) * 100);
+  document.getElementById('ob-progress').style.width = pct + '%';
+  document.getElementById('ob-progress-text').textContent = completedSteps.size + ' / ' + totalSteps;
+}
+
+function updateActiveState() {
+  document.querySelectorAll('.journey-checkpoint').forEach(cp => {
+    cp.classList.remove('active');
+  });
+  // Find first incomplete step
+  for (let i = 0; i < totalSteps; i++) {
+    if (!completedSteps.has(i)) {
+      document.querySelector(`.journey-checkpoint[data-step="${i}"]`).classList.add('active');
+      break;
+    }
+  }
+}
+
+function checkAllComplete() {
+  if (completedSteps.size === totalSteps) {
+    document.getElementById('rating-section').classList.add('show');
+    fireConfetti();
+    // Scroll to rating
+    setTimeout(() => {
+      document.getElementById('rating-section').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 500);
+  } else {
+    document.getElementById('rating-section').classList.remove('show');
+  }
+}
+
+// Star rating
+let currentRating = 0;
+function setRating(val) {
+  currentRating = val;
+  document.querySelectorAll('.star').forEach(s => {
+    s.classList.toggle('active', parseInt(s.dataset.val) <= val);
+  });
+}
+
+function submitRating() {
+  document.querySelector('.rating-card').style.display = 'none';
+  document.getElementById('rating-thanks').classList.add('show');
+  fireConfetti();
+}
+
+// Confetti
+function fireConfetti() {
+  const container = document.getElementById('confetti');
+  container.innerHTML = '';
+  container.classList.add('show');
+  const colors = ['#C41E2A', '#2B6CB0', '#F4C542', '#059669', '#7C3AED', '#E8353F'];
+  for (let i = 0; i < 50; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 0.8 + 's';
+    piece.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
+    piece.style.width = (6 + Math.random() * 6) + 'px';
+    piece.style.height = (6 + Math.random() * 6) + 'px';
+    piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    container.appendChild(piece);
+  }
+  setTimeout(() => container.classList.remove('show'), 3000);
+}
+
+// Init active state
+updateActiveState();
+</script>
+
+</body>
+</html>

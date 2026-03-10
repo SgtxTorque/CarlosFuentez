@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discovery Conversation Job Aid — Amtel/T-Mobile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tmobile-magenta: #E20074;
+      --tmobile-magenta-dark: #B8005C;
+      --tmobile-black: #111827;
+      --tmobile-white: #FFFFFF;
+      --tmobile-gray: #F7F8FA;
+      --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-page: 0 4px 24px rgba(0,0,0,0.10), 0 1px 6px rgba(0,0,0,0.06);
+      --radius: 8px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--tmobile-gray);
+      color: var(--tmobile-black);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page-wrapper {
+      max-width: 880px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* ── Page (paper) ────────────────────────────── */
+    .page {
+      background: var(--tmobile-white);
+      border-radius: 4px;
+      box-shadow: var(--shadow-page);
+      margin-bottom: 48px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Header bar ──────────────────────────────── */
+    .page-header {
+      background: var(--tmobile-magenta);
+      color: var(--tmobile-white);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .page-header .brand {
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .page-header .meta {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    /* ── Page body ───────────────────────────────── */
+    .page-body {
+      padding: 32px 36px 28px;
+    }
+
+    /* ── Title ────────────────────────────────────── */
+    .page-title {
+      font-family: Impact, 'Arial Narrow', 'Helvetica Neue', Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--tmobile-black);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    /* ── Callout box ─────────────────────────────── */
+    .callout {
+      border: 2.5px solid var(--tmobile-magenta);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 28px;
+      background: #FFF5FA;
+    }
+    .callout-label {
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--tmobile-magenta);
+      margin-bottom: 6px;
+    }
+    .callout p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #1f2937;
+    }
+    .callout strong {
+      color: var(--tmobile-black);
+    }
+    .callout .highlight-list {
+      display: inline;
+      font-weight: 700;
+      color: var(--tmobile-magenta);
+    }
+
+    /* ── Step cards ───────────────────────────────── */
+    .step-card {
+      background: var(--tmobile-white);
+      border: 1px solid #E5E7EB;
+      border-radius: var(--radius);
+      padding: 20px 22px 18px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 0 16px;
+    }
+    .step-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-number {
+      grid-row: 1 / 5;
+      width: 42px;
+      height: 42px;
+      background: var(--tmobile-magenta);
+      color: var(--tmobile-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 3px;
+      flex-wrap: wrap;
+    }
+    .step-name {
+      font-weight: 800;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--tmobile-black);
+    }
+    .step-timing {
+      font-size: 12px;
+      font-weight: 600;
+      color: #9CA3AF;
+      letter-spacing: 0.3px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: #4B5563;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .script-section {
+      margin-bottom: 6px;
+    }
+    .script-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .script-label.say { color: var(--tmobile-magenta); }
+    .script-label.not { color: #9CA3AF; }
+    .script-label.tip { color: var(--tmobile-magenta); }
+
+    .script-text {
+      font-size: 12.5px;
+      font-style: italic;
+      color: #374151;
+      line-height: 1.5;
+      padding-left: 2px;
+    }
+    .script-text.strikethrough {
+      text-decoration: line-through;
+      color: #9CA3AF;
+    }
+
+    .pro-tip {
+      font-size: 12.5px;
+      color: #374151;
+      line-height: 1.5;
+      padding-left: 2px;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    .page-footer {
+      padding: 12px 36px;
+      border-top: 1px solid #E5E7EB;
+      font-size: 10px;
+      color: #9CA3AF;
+      text-align: center;
+      letter-spacing: 0.3px;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════════════
+       PAGE 2 STYLES
+       ══════════════════════════════════════════════ */
+
+    .page-subtitle {
+      font-size: 14px;
+      color: #6B7280;
+      margin-bottom: 24px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* Question bank grid */
+    .question-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .question-card {
+      border: 1px solid #E5E7EB;
+      border-radius: var(--radius);
+      padding: 18px 20px 16px;
+      box-shadow: var(--shadow-card);
+      background: var(--tmobile-white);
+    }
+    .question-card-title {
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--tmobile-black);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      border-bottom: 3px solid var(--tmobile-magenta);
+    }
+    .question-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .question-card li {
+      font-size: 12.5px;
+      color: #374151;
+      line-height: 1.55;
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+    .question-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 7px;
+      height: 7px;
+      background: var(--tmobile-magenta);
+      border-radius: 50%;
+    }
+
+    /* ── The Math section ─────────────────────────── */
+    .section-title {
+      font-family: Impact, 'Arial Narrow', 'Helvetica Neue', Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--tmobile-black);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid var(--tmobile-magenta);
+      line-height: 1.2;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .comparison-card {
+      border-radius: var(--radius);
+      padding: 20px 22px 18px;
+      border: 1px solid;
+    }
+    .comparison-card.fail {
+      background: #FEF2F2;
+      border-color: #FECACA;
+    }
+    .comparison-card.success {
+      background: #F0FDF4;
+      border-color: #BBF7D0;
+    }
+    .comparison-card-title {
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+    .comparison-card.fail .comparison-card-title {
+      color: #DC2626;
+    }
+    .comparison-card.success .comparison-card-title {
+      color: #16A34A;
+    }
+    .comparison-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .comparison-card li {
+      font-size: 12.5px;
+      color: #374151;
+      line-height: 1.6;
+      padding: 2px 0;
+    }
+    .comparison-card li strong {
+      font-weight: 700;
+    }
+    .comparison-card.fail li {
+      color: #7F1D1D;
+    }
+    .comparison-card.success li {
+      color: #14532D;
+    }
+    .ticket-highlight {
+      font-weight: 800;
+      font-size: 15px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed;
+    }
+    .comparison-card.fail .ticket-highlight {
+      color: #DC2626;
+      border-color: #FECACA;
+    }
+    .comparison-card.success .ticket-highlight {
+      color: #16A34A;
+      border-color: #BBF7D0;
+    }
+
+    /* ── Big banner ───────────────────────────────── */
+    .big-banner {
+      background: var(--tmobile-magenta);
+      color: var(--tmobile-white);
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: var(--radius);
+      margin-bottom: 14px;
+    }
+    .big-banner .headline {
+      font-family: Impact, 'Arial Narrow', 'Helvetica Neue', Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.3;
+    }
+    .banner-subtext {
+      font-size: 12.5px;
+      color: #6B7280;
+      text-align: center;
+      margin-bottom: 22px;
+      font-style: italic;
+      line-height: 1.55;
+    }
+
+    /* ── Bottom callout ───────────────────────────── */
+    .bottom-callout {
+      background: #FFF5FA;
+      border: 2.5px solid var(--tmobile-magenta);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      text-align: center;
+    }
+    .bottom-callout .label {
+      font-weight: 800;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--tmobile-magenta);
+      margin-bottom: 6px;
+    }
+    .bottom-callout .main-quote {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--tmobile-black);
+      margin-bottom: 6px;
+      line-height: 1.45;
+    }
+    .bottom-callout .main-quote .gt {
+      color: var(--tmobile-magenta);
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .bottom-callout .tagline {
+      font-size: 12.5px;
+      color: #6B7280;
+      font-style: italic;
+    }
+
+    /* ── Print helpers ────────────────────────────── */
+    @media print {
+      body { background: white; }
+      .page-wrapper { padding: 0; margin: 0; }
+      .page {
+        box-shadow: none;
+        page-break-after: always;
+        margin-bottom: 0;
+        border: 1px solid #E5E7EB;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 1 — THE DISCOVERY CONVERSATION
+       ═══════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="brand">Amtel-Nation</span>
+      <span class="meta">Job Aid &nbsp;|&nbsp; All Teammates &nbsp;|&nbsp; Print &amp; Laminate</span>
+    </div>
+
+    <div class="page-body">
+      <h1 class="page-title">The Discovery Conversation</h1>
+
+      <div class="callout">
+        <div class="callout-label">The #1 Revenue Leak in Wireless Retail</div>
+        <p>
+          Most reps jump straight to <strong>"What phone do you want?"</strong> instead of
+          <strong>"What do you use your phone for?"</strong> Discovery drives:
+          <span class="highlight-list">higher plans</span> &nbsp;|&nbsp;
+          <span class="highlight-list">more accessories</span> &nbsp;|&nbsp;
+          <span class="highlight-list">better retention</span>
+        </p>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-header">
+          <span class="step-name">Connect</span>
+          <span class="step-timing">First 30 sec</span>
+        </div>
+        <div class="step-desc">Build rapport before business. Acknowledge the person, not the transaction.</div>
+        <div>
+          <div class="script-section">
+            <div class="script-label say">Say This:</div>
+            <div class="script-text">"Welcome in! What brings you to T-Mobile today?" / "Hey! Shopping for yourself or someone else?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label not">Not This:</div>
+            <div class="script-text strikethrough">"Hi, are you looking for a new phone?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label tip">Pro Tip:</div>
+            <div class="pro-tip">Match their energy. Casual browser? Stay casual. Urgent need? Get focused fast.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-header">
+          <span class="step-name">Discover</span>
+          <span class="step-timing">2 &ndash; 4 min</span>
+        </div>
+        <div class="step-desc">Understand their life BEFORE you touch a device. Ask open-ended questions about how they actually use their phone.</div>
+        <div>
+          <div class="script-section">
+            <div class="script-label say">Say This:</div>
+            <div class="script-text">"Walk me through a typical day with your phone." / "What frustrates you most about your current setup?" / "Who else is on your plan? How do they use theirs?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label not">Not This:</div>
+            <div class="script-text strikethrough">"What phone are you interested in?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label tip">Pro Tip:</div>
+            <div class="pro-tip">Listen for: streaming, gaming, photos, travel, family, work. These are your selling cues.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-header">
+          <span class="step-name">Recommend</span>
+          <span class="step-timing">2 &ndash; 3 min</span>
+        </div>
+        <div class="step-desc">Connect THEIR needs to YOUR solution. Every recommendation ties back to something they said.</div>
+        <div>
+          <div class="script-section">
+            <div class="script-label say">Say This:</div>
+            <div class="script-text">"Your kids stream a lot &mdash; Go5G Plus gives unlimited premium data so they never buffer." / "Since you travel for work, this camera and battery life will make a real difference."</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label not">Not This:</div>
+            <div class="script-text strikethrough">"This is our best-selling phone."</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label tip">Pro Tip:</div>
+            <div class="pro-tip">Use "You said..." before every recommendation. It proves you listened.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-card">
+        <div class="step-number">4</div>
+        <div class="step-header">
+          <span class="step-name">Add Value</span>
+          <span class="step-timing">1 &ndash; 2 min</span>
+        </div>
+        <div class="step-desc">Accessories and protection aren't upsells &mdash; they solve problems the customer already told you about.</div>
+        <div>
+          <div class="script-section">
+            <div class="script-label say">Say This:</div>
+            <div class="script-text">"You drop your phone a lot &mdash; this case + protector saves you from a $250 repair." / "Always in the car? This MagSafe charger keeps you powered, no cord tangle."</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label not">Not This:</div>
+            <div class="script-text strikethrough">"Want a case with that?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label tip">Pro Tip:</div>
+            <div class="pro-tip">If you did discovery right, accessories sell themselves. No discovery = awkward upsell.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5 -->
+      <div class="step-card">
+        <div class="step-number">5</div>
+        <div class="step-header">
+          <span class="step-name">Close &amp; Set Up</span>
+          <span class="step-timing">Wrap-up</span>
+        </div>
+        <div class="step-desc">Confirm they feel good. Recap what they're getting and why. Transfer data. Leave them confident.</div>
+        <div>
+          <div class="script-section">
+            <div class="script-label say">Say This:</div>
+            <div class="script-text">"Let me recap &mdash; unlimited plan, new Galaxy with protection, and the car charger. Sound right?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label not">Not This:</div>
+            <div class="script-text strikethrough">"Anything else?"</div>
+          </div>
+          <div class="script-section">
+            <div class="script-label tip">Pro Tip:</div>
+            <div class="pro-tip">Walk them to the door. Say their name. This earns the referral and the survey score.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      Amtel / T-Mobile &nbsp;&bull;&nbsp; Discovery Conversation Job Aid &nbsp;&bull;&nbsp; Page 1 of 2 &nbsp;&bull;&nbsp; For training purposes &nbsp;&bull;&nbsp; Laminate &amp; post at every register
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════
+       PAGE 2 — DISCOVERY QUESTION BANK & THE MATH
+       ═══════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <span class="brand">Amtel-Nation</span>
+      <span class="meta">Job Aid &nbsp;|&nbsp; Back Side &nbsp;|&nbsp; Quick Reference</span>
+    </div>
+
+    <div class="page-body">
+      <h1 class="page-title">Discovery Question Bank</h1>
+      <p class="page-subtitle">Memorize 2&ndash;3 from each category. Rotate them so your conversations stay natural.</p>
+
+      <!-- Question grid -->
+      <div class="question-grid">
+        <!-- LIFESTYLE -->
+        <div class="question-card">
+          <div class="question-card-title">Lifestyle</div>
+          <ul>
+            <li>Walk me through how you use your phone on a typical day.</li>
+            <li>What apps do you spend the most time on?</li>
+            <li>Do you stream music, shows, or games on your phone?</li>
+            <li>How important is your phone's camera to you?</li>
+          </ul>
+        </div>
+        <!-- PAIN POINTS -->
+        <div class="question-card">
+          <div class="question-card-title">Pain Points</div>
+          <ul>
+            <li>What frustrates you most about your current phone?</li>
+            <li>Does your battery last through the day?</li>
+            <li>Are you happy with your current plan or feel like you're overpaying?</li>
+            <li>Any dead zones or coverage issues where you live or work?</li>
+          </ul>
+        </div>
+        <!-- FAMILY & PLAN -->
+        <div class="question-card">
+          <div class="question-card-title">Family &amp; Plan</div>
+          <ul>
+            <li>Who else is on your account? How do they use their devices?</li>
+            <li>Any kids who need their first phone or an upgrade?</li>
+            <li>Are you taking advantage of any family plan discounts?</li>
+            <li>Is anyone on your plan traveling internationally soon?</li>
+          </ul>
+        </div>
+        <!-- ACCESSORIES -->
+        <div class="question-card">
+          <div class="question-card-title">Accessories</div>
+          <ul>
+            <li>How do you charge your phone &mdash; nightstand, car, office?</li>
+            <li>Have you ever cracked a screen or dropped your phone in water?</li>
+            <li>Do you use earbuds or a smartwatch with your phone?</li>
+            <li>What does your work-from-home or car setup look like?</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- THE MATH -->
+      <div class="section-title">Why Discovery Pays &mdash; The Math</div>
+
+      <div class="comparison-grid">
+        <!-- WITHOUT -->
+        <div class="comparison-card fail">
+          <div class="comparison-card-title">Without Discovery</div>
+          <ul>
+            <li><strong>Avg Plan:</strong> Essentials &mdash; $60/mo</li>
+            <li><strong>Device:</strong> Whatever they asked for</li>
+            <li><strong>Accessories:</strong> $0 &mdash; didn't ask</li>
+            <li><strong>Protection:</strong> Declined &mdash; wasn't framed</li>
+          </ul>
+          <div class="ticket-highlight">Avg Ticket: ~$60</div>
+        </div>
+        <!-- WITH -->
+        <div class="comparison-card success">
+          <div class="comparison-card-title">With Discovery</div>
+          <ul>
+            <li><strong>Avg Plan:</strong> Go5G Plus &mdash; $90/mo</li>
+            <li><strong>Device:</strong> Matched to their lifestyle</li>
+            <li><strong>Accessories:</strong> Case + charger &mdash; $75</li>
+            <li><strong>Protection:</strong> P360 &mdash; $18/mo (framed as savings)</li>
+          </ul>
+          <div class="ticket-highlight">Avg Ticket: ~$183+</div>
+        </div>
+      </div>
+
+      <!-- Big banner -->
+      <div class="big-banner">
+        <div class="headline">3x Higher Ticket &nbsp;&bull;&nbsp; Better Retention &nbsp;&bull;&nbsp; Stronger Survey Scores</div>
+      </div>
+      <p class="banner-subtext">Same customer. Same store. The only difference is whether you asked the right questions first.</p>
+
+      <!-- Bottom callout -->
+      <div class="bottom-callout">
+        <div class="label">Remember</div>
+        <div class="main-quote">
+          "What do you use your phone for?" <span class="gt">&gt;</span> "What phone do you want?"
+        </div>
+        <div class="tagline">Ask first. Recommend second. The sale takes care of itself.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      Amtel / T-Mobile &nbsp;&bull;&nbsp; Discovery Conversation Job Aid &nbsp;&bull;&nbsp; Page 2 of 2 &nbsp;&bull;&nbsp; Designed as an L&amp;D Portfolio Piece &nbsp;&bull;&nbsp; Carlos &mdash; Learning Experience Design
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

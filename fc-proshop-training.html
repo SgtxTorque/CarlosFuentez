@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProShop Pro Training Day — Fitness Connection</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --fc-red: #C41E2A;
+  --fc-blue: #003B6F;
+  --fc-blue-mid: #1B75BB;
+  --fc-yellow: #FDB913;
+  --fc-green: #2ECC71;
+  --fc-black: #111827;
+  --fc-gray: #58595B;
+  --fc-offwhite: #F7F8FA;
+  --fc-light-gray: #F7F7F7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--fc-offwhite);
+  color: var(--fc-gray);
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.header-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.header-text h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1.1;
+}
+
+.header-text h1 .blue { color: var(--fc-blue); }
+.header-text h1 .red { color: var(--fc-red); }
+
+.header-text .subtitle {
+  font-size: 14px;
+  color: var(--fc-gray);
+  margin-top: 4px;
+}
+
+/* Progress bar */
+.progress-bar-container {
+  background: #E5E7EB;
+  border-radius: 999px;
+  height: 10px;
+  margin: 20px 0 24px;
+  overflow: hidden;
+  position: sticky;
+  top: 8px;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--fc-blue), var(--fc-blue-mid));
+  border-radius: 999px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.progress-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fc-blue);
+  margin-bottom: 24px;
+}
+
+/* Why section */
+.why-box {
+  background: white;
+  border-left: 4px solid var(--fc-blue);
+  border-radius: 0 12px 12px 0;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.why-box h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--fc-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.why-box p { font-size: 14px; line-height: 1.7; }
+.why-box .accent { color: var(--fc-red); font-weight: 700; }
+
+/* Section headers */
+.section-header {
+  background: var(--fc-blue);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px 10px 0 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-header .num {
+  background: rgba(255,255,255,0.2);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.section-block {
+  margin-bottom: 28px;
+}
+
+/* Checklist table */
+.checklist-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.checklist-table th {
+  background: var(--fc-blue);
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.checklist-table th:nth-child(2),
+.checklist-table th:nth-child(3) {
+  text-align: center;
+  width: 100px;
+}
+
+.checklist-table th:nth-child(4) { width: 160px; }
+
+.checklist-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #ECECEC;
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.checklist-table tr:nth-child(even) td { background: var(--fc-light-gray); }
+.checklist-table tr:last-child td { border-bottom: none; }
+
+.topic-title {
+  font-weight: 700;
+  color: var(--fc-blue);
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.topic-desc {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--fc-gray);
+}
+
+.check-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--fc-blue-mid);
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  background: white;
+  user-select: none;
+}
+
+.checkbox.checked {
+  background: var(--fc-blue-mid);
+  border-color: var(--fc-blue-mid);
+  color: white;
+}
+
+.checkbox:hover { transform: scale(1.1); }
+
+/* Grade select */
+.grade-select {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.grade-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 2px solid #E5E7EB;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.grade-btn:hover { transform: scale(1.15); }
+.grade-btn.active-got { border-color: var(--fc-green); background: #D1FAE5; }
+.grade-btn.active-practice { border-color: var(--fc-yellow); background: #FEF3C7; }
+.grade-btn.active-reteach { border-color: var(--fc-red); background: #FEE2E2; }
+
+.notes-input {
+  width: 100%;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-family: 'Barlow', sans-serif;
+  color: var(--fc-gray);
+  resize: none;
+  height: 36px;
+}
+
+.notes-input:focus { outline: none; border-color: var(--fc-blue-mid); }
+
+/* Grade key */
+.grade-key {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.grade-key-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.grade-key-item .icon { font-size: 16px; }
+.grade-key-item.got { color: var(--fc-green); }
+.grade-key-item.practice { color: #D97706; }
+.grade-key-item.reteach { color: var(--fc-red); }
+
+/* Upsell scripts */
+.script-table {
+  width: 100%;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.script-row {
+  display: flex;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.script-row:last-child { border-bottom: none; }
+.script-row:nth-child(even) { background: var(--fc-light-gray); }
+
+.script-num {
+  width: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--fc-blue-mid);
+}
+
+.script-text {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.script-text strong { color: var(--fc-red); font-style: normal; }
+
+/* Planogram */
+.plano-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.plano-col { text-align: center; }
+
+.plano-label {
+  padding: 10px 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.plano-label:nth-child(1) { background: var(--fc-red); }
+
+.plano-content {
+  padding: 14px 10px;
+  border-right: 1px solid #ECECEC;
+}
+
+.plano-col:last-child .plano-content { border-right: none; }
+
+.plano-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--fc-blue);
+  margin-bottom: 4px;
+}
+
+.plano-desc { font-size: 11px; color: var(--fc-gray); margin-bottom: 6px; }
+
+.plano-callout {
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Restock table */
+.restock-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.restock-table th {
+  background: var(--fc-blue);
+  color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 14px;
+  text-align: left;
+}
+
+.restock-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #ECECEC;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.restock-table tr:last-child td { border-bottom: none; }
+
+.restock-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fc-blue);
+}
+
+.restock-why {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--fc-gray);
+}
+
+/* Sales tracker */
+.sales-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: white;
+  padding: 20px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.sales-card {
+  border: 2px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+
+.sales-card-header {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--fc-blue);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--fc-yellow);
+}
+
+.sales-input {
+  width: 100%;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+  font-family: 'Barlow', sans-serif;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.sales-input:focus { outline: none; border-color: var(--fc-blue-mid); }
+.sales-input-label { font-size: 11px; color: var(--fc-gray); margin-bottom: 4px; }
+
+/* Sign off */
+.signoff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.signoff-col { padding: 20px; }
+.signoff-col:first-child { border-right: 1px solid #ECECEC; }
+
+.signoff-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 10px 20px;
+  color: white;
+}
+
+.signoff-label.teammate { background: var(--fc-blue); }
+.signoff-label.manager { background: var(--fc-red); }
+
+.signoff-text {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--fc-gray);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.signoff-line {
+  border-bottom: 1px solid var(--fc-gray);
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: var(--fc-gray);
+}
+
+/* Footer */
+.footer-note {
+  text-align: center;
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+@media (max-width: 640px) {
+  .page { padding: 16px; }
+  .header-text h1 { font-size: 24px; }
+  .plano-grid { grid-template-columns: repeat(2, 1fr); }
+  .sales-grid { grid-template-columns: 1fr; }
+  .signoff-grid { grid-template-columns: 1fr; }
+  .signoff-col:first-child { border-right: none; border-bottom: 1px solid #ECECEC; }
+  .checklist-table th:nth-child(4),
+  .checklist-table td:nth-child(4) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <img src="images/fc-victory-icon.jpg" alt="Fitness Connection" class="header-logo">
+    <div class="header-text">
+      <h1><span class="blue">PROSHOP PRO</span> <span class="red">TRAINING DAY</span></h1>
+      <p class="subtitle">Your guide to becoming a ProShop Pro &nbsp;|&nbsp; Day 3 of Week 1</p>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <p class="progress-label" id="progressLabel">0 of 8 topics completed</p>
+
+  <!-- Why -->
+  <div class="why-box">
+    <h3>Why the ProShop Matters</h3>
+    <p>The ProShop isn't just a counter. It's an extension of our EPIC member experience. Every drink you make, every supplement you recommend, and every piece of FitCo gear you sell fuels our members' fitness journeys. You are the face of nutrition at your club.</p>
+    <p class="accent" style="margin-top: 8px;">Show up with PASSION. Deliver with EXCELLENCE.</p>
+  </div>
+
+  <!-- Grade Key -->
+  <div class="grade-key">
+    <span class="grade-key-item" style="color: var(--fc-blue); font-weight: 700;">MANAGER GRADE KEY:</span>
+    <span class="grade-key-item got"><span class="icon">⭐</span> GOT IT</span>
+    <span class="grade-key-item practice"><span class="icon">🔄</span> NEEDS PRACTICE</span>
+    <span class="grade-key-item reteach"><span class="icon">❌</span> RETEACH</span>
+  </div>
+
+  <!-- Section 1: Knowledge Checklist -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">1</span> PROSHOP KNOWLEDGE CHECKLIST
+    </div>
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th>Topic</th>
+          <th>Learned</th>
+          <th>Manager Grade</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody id="checklistBody">
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 2: Upsell Scripts -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">2</span> EPIC UPSELL SCRIPTS — PRACTICE THESE OUT LOUD
+    </div>
+    <div class="script-table">
+      <div class="script-row">
+        <div class="script-num">1</div>
+        <div class="script-text">"Hey! Great choice on that protein shake. Want to add a <strong>collagen boost</strong> for just $1 more? It's great for recovery."</div>
+      </div>
+      <div class="script-row">
+        <div class="script-num">2</div>
+        <div class="script-text">"You just crushed that workout! Can I get you a recovery smoothie? Our <strong>Peanut Power</strong> is a member favorite, packed with 30g of protein."</div>
+      </div>
+      <div class="script-row">
+        <div class="script-num">3</div>
+        <div class="script-text">"Have you seen our new FitCo tanks? They're <strong>super popular</strong> right now and selling fast. Want to check one out?"</div>
+      </div>
+      <div class="script-row">
+        <div class="script-num">4</div>
+        <div class="script-text">"Welcome in! Before you head to the floor, we've got a <strong>Buy One, Get One</strong> on energy bars today. Want to grab a couple?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 3: Planogram -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">3</span> PROSHOP PLANOGRAM — HOW WE STOCK IT
+    </div>
+    <p style="padding: 12px 16px; background: white; font-size: 13px; border-bottom: 1px solid #ECECEC;">Every product has a home. If a member can't find it, we can't sell it. Memorize this layout and keep it tight.</p>
+    <div class="plano-grid">
+      <div class="plano-col">
+        <div class="plano-label" style="background: var(--fc-red);">Top Shelf</div>
+        <div class="plano-content">
+          <div class="plano-title">FitCo Merchandise</div>
+          <div class="plano-desc">Tanks, tees, shakers, hats</div>
+          <div class="plano-callout" style="color: var(--fc-red);">↑ High visibility display</div>
+        </div>
+      </div>
+      <div class="plano-col">
+        <div class="plano-label" style="background: var(--fc-blue);">Eye Level</div>
+        <div class="plano-content">
+          <div class="plano-title">Protein Drinks</div>
+          <div class="plano-desc">Pre-made shakes, RTDs</div>
+          <div class="plano-callout" style="color: var(--fc-blue-mid);">⚡ Highest grab & go sales</div>
+        </div>
+      </div>
+      <div class="plano-col">
+        <div class="plano-label" style="background: var(--fc-blue-mid);">Mid Shelf</div>
+        <div class="plano-content">
+          <div class="plano-title">Energy Bars & Snacks</div>
+          <div class="plano-desc">Bars, bites, trail mix</div>
+          <div class="plano-callout" style="color: var(--fc-green);">💰 Impulse buy zone</div>
+        </div>
+      </div>
+      <div class="plano-col">
+        <div class="plano-label" style="background: var(--fc-gray);">Bottom Shelf</div>
+        <div class="plano-content">
+          <div class="plano-title">Supplements & Tubs</div>
+          <div class="plano-desc">Powder tubs, large items</div>
+          <div class="plano-callout" style="color: var(--fc-gray);">📦 Heavy / bulk storage</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Restock Schedule -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">4</span> RESTOCK SCHEDULE — NON-NEGOTIABLES
+    </div>
+    <table class="restock-table">
+      <thead>
+        <tr>
+          <th style="width: 100px;">Time</th>
+          <th>What to Restock</th>
+          <th style="width: 240px;">Why It Matters</th>
+          <th style="width: 60px;">Done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background: #FFF5F5;">
+          <td><span class="restock-label">Opening</span></td>
+          <td>Full cooler restock, snack bars faced forward, retail display straightened, POS drawer verified</td>
+          <td class="restock-why">Early birds buy the most drinks. Empty cooler = lost revenue.</td>
+          <td class="check-cell"><div class="checkbox restock-check" onclick="toggleCheck(this)"></div></td>
+        </tr>
+        <tr>
+          <td><span class="restock-label">Mid-Day</span></td>
+          <td>Restock drinks sold during AM, wipe counters, refill napkins/straws, face all products</td>
+          <td class="restock-why">Lunch crowd hits hard. Be ready before the wave, not during.</td>
+          <td class="check-cell"><div class="checkbox restock-check" onclick="toggleCheck(this)"></div></td>
+        </tr>
+        <tr style="background: #F0F4FF;">
+          <td><span class="restock-label">Closing</span></td>
+          <td>Full cooler restock for next day, clean blender area, wipe all surfaces, count inventory, close POS</td>
+          <td class="restock-why">The next shift inherits your ProShop. Leave it EPIC.</td>
+          <td class="check-cell"><div class="checkbox restock-check" onclick="toggleCheck(this)"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 5: Sales Tracker -->
+  <div class="section-block">
+    <div class="section-header" style="background: var(--fc-yellow); color: var(--fc-blue);">
+      <span class="num" style="background: rgba(0,59,111,0.15);">5</span> MY SHIFT SALES TRACKER
+    </div>
+    <p style="padding: 12px 16px; background: white; font-size: 13px; border-bottom: 1px solid #ECECEC;">Track your ProShop sales 3 times per shift. Your daily goal builds toward your monthly target. Every dollar counts!</p>
+    <div class="sales-grid">
+      <div class="sales-card">
+        <div class="sales-card-header">CHECK-IN #1</div>
+        <div class="sales-input-label">Time</div>
+        <input type="text" class="sales-input" placeholder="__:__ AM / PM">
+        <div class="sales-input-label">Drinks</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-red); font-weight: 700;">
+        <div class="sales-input-label">Retail</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-blue-mid); font-weight: 700;">
+      </div>
+      <div class="sales-card">
+        <div class="sales-card-header">CHECK-IN #2</div>
+        <div class="sales-input-label">Time</div>
+        <input type="text" class="sales-input" placeholder="__:__ AM / PM">
+        <div class="sales-input-label">Drinks</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-red); font-weight: 700;">
+        <div class="sales-input-label">Retail</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-blue-mid); font-weight: 700;">
+      </div>
+      <div class="sales-card">
+        <div class="sales-card-header">CHECK-IN #3</div>
+        <div class="sales-input-label">Time</div>
+        <input type="text" class="sales-input" placeholder="__:__ AM / PM">
+        <div class="sales-input-label">Drinks</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-red); font-weight: 700;">
+        <div class="sales-input-label">Retail</div>
+        <input type="text" class="sales-input" placeholder="$" style="color: var(--fc-blue-mid); font-weight: 700;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 6: Sign-Off -->
+  <div class="section-block">
+    <div class="section-header">
+      <span class="num">6</span> END OF DAY SIGN-OFF
+    </div>
+    <p style="padding: 12px 16px; background: white; font-size: 13px; border-bottom: 1px solid #ECECEC;">Both the Teammate and Manager must sign below confirming all ProShop training topics were covered and assessed. <strong style="color: var(--fc-blue);">This page becomes part of your EPIC Training file.</strong></p>
+    <div class="signoff-grid">
+      <div>
+        <div class="signoff-label teammate">TEAMMATE</div>
+        <div class="signoff-col">
+          <p class="signoff-text">I confirm I completed all ProShop training topics listed above and understand my daily responsibilities.</p>
+          <div class="signoff-line" style="margin-bottom: 16px;">Signature</div>
+          <div class="signoff-line">Date</div>
+        </div>
+      </div>
+      <div>
+        <div class="signoff-label manager">MANAGER</div>
+        <div class="signoff-col">
+          <p class="signoff-text">I confirm this teammate was trained, observed, and assessed on all ProShop operations above.</p>
+          <div class="signoff-line" style="margin-bottom: 16px;">Signature</div>
+          <div class="signoff-line">Date</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer-note">ProShop Pro Training Day &copy; Fitness Connection. Designed by Carlos Fuentez.</p>
+</div>
+
+<script>
+const topics = [
+  { title: 'Know Your Menu', desc: 'Can name all drink categories & top sellers' },
+  { title: 'Ingredient Knowledge', desc: 'Understands protein types, enhancers & benefits' },
+  { title: 'POS & Money Handling', desc: 'Can ring up orders & process payments accurately' },
+  { title: 'Upselling & Suggestive Selling', desc: 'Comfortable offering add-ons & upgrades' },
+  { title: 'Stocking & Planogram Compliance', desc: 'Knows where every product goes on display' },
+  { title: 'ProShop Cleanliness Standards', desc: 'Wipe-down, organize, presentable at all times' },
+  { title: 'Retail Product Knowledge', desc: 'Can explain FitCo gear, bars & supplements' },
+  { title: 'Daily & Monthly Sales Goals', desc: 'Knows personal targets and how to track them' }
+];
+
+const body = document.getElementById('checklistBody');
+topics.forEach((t, i) => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td>
+      <div class="topic-title">${t.title}</div>
+      <div class="topic-desc">${t.desc}</div>
+    </td>
+    <td class="check-cell">
+      <div class="checkbox topic-check" data-index="${i}" onclick="toggleCheck(this)"></div>
+    </td>
+    <td class="check-cell">
+      <div class="grade-select">
+        <div class="grade-btn" data-grade="got" onclick="setGrade(this)" title="Got It">⭐</div>
+        <div class="grade-btn" data-grade="practice" onclick="setGrade(this)" title="Needs Practice">🔄</div>
+        <div class="grade-btn" data-grade="reteach" onclick="setGrade(this)" title="Reteach">❌</div>
+      </div>
+    </td>
+    <td><textarea class="notes-input" placeholder="Notes..."></textarea></td>
+  `;
+  body.appendChild(tr);
+});
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✔' : '';
+  updateProgress();
+}
+
+function setGrade(el) {
+  const siblings = el.parentElement.querySelectorAll('.grade-btn');
+  siblings.forEach(s => s.className = 'grade-btn');
+  const grade = el.dataset.grade;
+  el.classList.add('active-' + grade);
+}
+
+function updateProgress() {
+  const checks = document.querySelectorAll('.topic-check.checked');
+  const total = topics.length;
+  const done = checks.length;
+  const pct = Math.round((done / total) * 100);
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = done + ' of ' + total + ' topics completed';
+
+  if (done === total) {
+    document.getElementById('progressLabel').textContent = 'All topics completed! You\'re a ProShop Pro! 🎉';
+    document.getElementById('progressBar').style.background = 'linear-gradient(90deg, var(--fc-green), #10B981)';
+  }
+}
+</script>
+
+</body>
+</html>
