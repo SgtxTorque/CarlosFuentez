@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lynx — Carlos Fuentez</title>
+  <meta name="description" content="Lynx: a dual-platform youth sports engagement and operations platform built from scratch with zero coding experience. React web + React Native mobile, Supabase backend, 60+ database tables.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .lynx-brand { background: linear-gradient(135deg, #1a2744 0%, #0f1724 100%); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="nav">
+    <a href="index.html" class="nav-name">Carlos Fuentez</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#philosophy">How I Think</a></li>
+      <li><a href="resume.html">Resume</a></li>
+      <li><a href="index.html#contact">Let's Talk</a></li>
+      <li><a href="index.html#work" class="nav-back">← Back to work</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="index.html#about">About</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#philosophy">How I Think</a>
+    <a href="resume.html">Resume</a>
+    <a href="index.html#contact">Let's Talk</a>
+    <a href="index.html#work">← Back to work</a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="cs-hero lynx-brand" style="min-height: 55vh;">
+    <div class="cs-hero-inner">
+      <div class="lynx-hero-logo reveal">
+        <img src="images/lynx-logo.png" alt="Lynx app logo" class="lynx-hero-logo-img">
+      </div>
+      <p class="cs-hero-label reveal">Product Design & Development</p>
+      <h1 class="cs-hero-headline reveal">I built a youth sports platform from scratch. With zero coding experience.</h1>
+      <p class="cs-hero-subtext reveal">Lynx started as a solution for my own volleyball club, Black Hornets. I was tired of managing a competitive youth program with group texts, spreadsheets, and five different apps. So I designed and built a dual-platform product: React + Vite for the web admin, React Native + Expo for the mobile app, sharing a Supabase backend with 60+ database tables. From zero experience to a fully functional product.</p>
+      <a href="https://thelynxapp.com" target="_blank" rel="noopener" class="btn-primary reveal" style="margin-top: 24px; display: inline-block;">Visit thelynxapp.com →</a>
+    </div>
+  </section>
+
+  <!-- Metadata Bar -->
+  <div class="meta-bar">
+    <div class="meta-bar-inner reveal">
+      <div class="reveal-child">
+        <p class="meta-item-label">Product</p>
+        <p class="meta-item-value">Lynx</p>
+      </div>
+      <div class="reveal-child">
+        <p class="meta-item-label">Platforms</p>
+        <p class="meta-item-value">Web (React + Vite) + Mobile (React Native + Expo)</p>
+      </div>
+      <div class="reveal-child">
+        <p class="meta-item-label">Website</p>
+        <p class="meta-item-value"><a href="https://thelynxapp.com" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">thelynxapp.com</a></p>
+      </div>
+      <div class="reveal-child">
+        <p class="meta-item-label">Backend</p>
+        <p class="meta-item-value">Supabase + Stripe · 60+ tables</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== THE ENGAGEMENT SYSTEM ==================== -->
+  <section class="cs-section cs-section--light">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">The Differentiator</p>
+      <h2 class="reveal-child">Youth sports has an engagement problem. Lynx fixes it.</h2>
+      <p class="reveal-child">Every youth sports management app handles the basics: rosters, schedules, payments. But none of them solve the real problem: keeping kids engaged in their own development and making parents feel connected to the experience. That's the gap Lynx was built to fill.</p>
+      <p class="reveal-child">The engagement layer is what makes Lynx different. It sits on top of the management tools and transforms how players, coaches, parents, and admins interact with the club. It's designed to feel like a sports video game, not a spreadsheet.</p>
+    </div>
+  </section>
+
+  <!-- ==================== PLAYER EXPERIENCE ==================== -->
+  <section class="cs-section cs-section--dark">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">For Players (Ages 10-18)</p>
+      <h2 class="reveal-child">Development that feels like a game.</h2>
+      <p class="reveal-child">Most kids get a stat sheet at the end of the season and forget about it. Lynx makes development something players actually want to engage with.</p>
+
+      <div class="lynx-problems-grid">
+        <div class="lynx-problem-card lynx-problem-card--dark reveal-child">
+          <h4>XP Power Bars</h4>
+          <p>Skill evaluations displayed as color-tiered XP bars. Sky blue to gold for excellent, gray for below average. Never plain numbers or boring charts.</p>
+        </div>
+        <div class="lynx-problem-card lynx-problem-card--dark lynx-problem-card--mascot reveal-child">
+          <img src="images/lynx-mascot-player.png" alt="Lynx player mascot" class="lynx-card-mascot" loading="lazy">
+          <h4>Challenge System</h4>
+          <p>25+ pre-built challenge templates that coaches deploy to keep players developing between practices. Skill drills, conditioning goals, team competitions.</p>
+        </div>
+        <div class="lynx-problem-card lynx-problem-card--dark reveal-child">
+          <h4>Achievement Badges</h4>
+          <p>Inspired by gaming culture. Common, Rare, Epic, and Legendary tiers. Players unlock badges through evaluations, challenges, and milestones. It's a reward system that makes development visible.</p>
+        </div>
+        <div class="lynx-problem-card lynx-problem-card--dark reveal-child">
+          <h4>Player Profile</h4>
+          <p>Feels like a sports video game character screen, not a database entry. Streak tracking, leaderboards, team standings, and a reason to come back every day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== COACH TOOLS ==================== -->
+  <section class="cs-section cs-section--light">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">For Coaches</p>
+      <h2 class="reveal-child">Replace the clipboard. Run game day from your phone.</h2>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Player Evaluations</h4>
+          <p>12 volleyball skills with swipe-through mobile forms. Evaluations feed directly into player XP bars and progression.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Game Day Command Center</h4>
+          <p>Lineup building, real-time attendance, score tracking, and stat entry all in one flow. Designed for the sideline, not the office.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Challenge Deployment</h4>
+          <p>Deploy challenges to keep players developing between practices. Track completion, review results, reward effort.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Communication Hub</h4>
+          <p>Team messaging with parent communication built in. Schedule practices and games with RSVP tracking. No more group texts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PARENT EXPERIENCE ==================== -->
+  <section class="cs-section cs-section--dark">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">For Parents</p>
+      <h2 class="reveal-child">No more "what happened at practice?"</h2>
+      <p class="reveal-child">Parents are the lifeblood of youth sports, but most clubs treat them like ATMs who sit in bleachers with no visibility. Lynx changes that.</p>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-item reveal-child">
+          <h4>Full Visibility</h4>
+          <p>See your child's evaluations, achievements, and progress in real time. Not just payment reminders.</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>Schedule & RSVP</h4>
+          <p>Practice and game schedules with one-tap RSVP. Never miss a game or wonder "when do we need to be there?"</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>Payments & Registration</h4>
+          <p>Payment tracking, multi-child registration, digital waivers. All managed through Stripe.</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>Coach Communication</h4>
+          <p>Direct channel to coaches. Updates, announcements, and conversations in one place. No more scattered group texts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADMIN EXPERIENCE ==================== -->
+  <section class="cs-section cs-section--light">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">For Admins</p>
+      <h2 class="reveal-child">One platform that handles everything.</h2>
+      <p class="reveal-child">Club directors shouldn't need spreadsheets, paper forms, and three different systems to run a season. Lynx puts it all in one place.</p>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Season Management</h4>
+          <p>Create seasons, build teams, manage rosters. Multi-team, multi-season support.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Registration & Waivers</h4>
+          <p>Custom registration forms with digital waivers. Multi-child registration for families with multiple athletes.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Custom Dashboard</h4>
+          <p>Drag-and-drop widget customization. Role-based views. See exactly what matters to you.</p>
+        </div>
+        <div class="deliverable-item deliverable-item--light reveal-child">
+          <h4>Operations</h4>
+          <p>Jersey management, payment tracking, volunteer coordination. The admin work that used to take days now takes minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PLATFORM PREVIEW ==================== -->
+  <section class="cs-section cs-section--dark">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">Platform Preview</p>
+      <h2 class="reveal-child">Four dashboards. One platform.</h2>
+      <p class="reveal-child">Every user type gets a tailored experience designed around how they actually interact with the club.</p>
+
+      <div class="lynx-preview-grid reveal-child">
+        <div class="lynx-preview-card">
+          <img src="images/Lynx Admin.png" alt="Lynx Admin Dashboard — widget grid with drag-and-drop layout customization" class="lynx-preview-img" loading="lazy">
+          <div class="lynx-preview-label">
+            <h4>Admin Dashboard</h4>
+            <p>Widget grid, drag-and-drop layout customization, role-based views</p>
+          </div>
+        </div>
+        <div class="lynx-preview-card">
+          <img src="images/Lynx Calendar.png" alt="Lynx Calendar — season scheduling and event management" class="lynx-preview-img" loading="lazy">
+          <div class="lynx-preview-label">
+            <h4>Calendar</h4>
+            <p>Season scheduling, event management, practice/game organization</p>
+          </div>
+        </div>
+        <div class="lynx-preview-card">
+          <img src="images/Lynx Coach.png" alt="Lynx Coach View — team management and game day tools" class="lynx-preview-img" loading="lazy">
+          <div class="lynx-preview-label">
+            <h4>Coach View</h4>
+            <p>Team management, player roster, game day tools</p>
+          </div>
+        </div>
+        <div class="lynx-preview-card">
+          <img src="images/Lynx Parent.png" alt="Lynx Parent View — child schedule, payments, and communication" class="lynx-preview-img" loading="lazy">
+          <div class="lynx-preview-label">
+            <h4>Parent View</h4>
+            <p>Child's schedule, payment tracking, communication hub</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile App -->
+      <div class="lynx-mobile-showcase reveal-child">
+        <div class="lynx-phone-frame">
+          <img src="images/lynx mobile signin.jfif" alt="Lynx mobile app sign-in screen on iOS/Android" class="lynx-phone-screen" loading="lazy">
+        </div>
+        <div class="lynx-mobile-text">
+          <h3>Mobile-first for players and parents.</h3>
+          <p>The mobile app is built with React Native + Expo for iOS and Android. Players check stats, parents manage payments, coaches run game day. All from their phone.</p>
+          <a href="https://thelynxapp.com" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; font-size: 14px;">thelynxapp.com →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TECH STACK ==================== -->
+  <section class="cs-section cs-section--alt">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">Tech Stack</p>
+      <h2 class="reveal-child">What powers Lynx.</h2>
+      <p class="reveal-child">Built entirely through AI-assisted development with Claude as the development partner. Zero coding background to a fully functional dual-platform product.</p>
+
+      <div class="deliverables-grid">
+        <div class="deliverable-item reveal-child">
+          <h4>React + Vite</h4>
+          <p>Web admin dashboard. Fast, modern, and responsive. Runs on any browser.</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>React Native + Expo</h4>
+          <p>Mobile app for iOS and Android. Shared codebase, native performance.</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>Supabase</h4>
+          <p>Backend with 60+ database tables. Real-time data, role-based access, authentication.</p>
+        </div>
+        <div class="deliverable-item reveal-child">
+          <h4>Stripe</h4>
+          <p>Payment processing for registration fees, season dues, and event payments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TAKEAWAY ==================== -->
+  <section class="cs-section cs-section--light">
+    <div class="cs-content reveal">
+      <p class="section-label reveal-child">The Takeaway</p>
+      <div class="takeaway reveal-child">
+        <h3>The best products are built by people who live the problem.</h3>
+        <p>I'm not a software engineer. I'm a builder who happened to need software. Lynx exists because I spent years running a club, got tired of the tools available, and decided to build something better. That same energy is how I approach every project, whether it's a training program, a recruiting function, or a full product. If it's broken, I'll fix it. If it's missing, I'll build it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CASE STUDY NAV ==================== -->
+  <nav class="cs-nav">
+    <div class="cs-nav-inner">
+      <a href="recruiting.html" class="cs-nav-link cs-nav-link--prev">
+        <small>Previous</small>
+        ← Recruiting
+      </a>
+      <a href="fun.html" class="cs-nav-link cs-nav-link--next">
+        <small>Next</small>
+        Just for Fun →
+      </a>
+    </div>
+  </nav>
+
+  <footer>
+    <p>&copy; 2026 Carlos Fuentez. Built with intention.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -2074,6 +2074,19 @@ footer p {
   z-index: 1;
 }
 
+.lynx-problem-card--dark {
+  background: var(--bg-dark-alt);
+  border-color: var(--border-dark);
+}
+
+.lynx-problem-card--dark h4 {
+  color: var(--text-light);
+}
+
+.lynx-problem-card--dark p {
+  color: var(--text-muted-light);
+}
+
 @media (max-width: 768px) {
   .lynx-problems-grid {
     grid-template-columns: 1fr;
